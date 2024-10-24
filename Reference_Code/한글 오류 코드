@@ -1,0 +1,3 @@
+!pip install koreanize-matplotlib
+
+import koreanize_matplotlib

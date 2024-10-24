@@ -1,0 +1,2 @@
+for i in os.listdir("폴더명"):
+  

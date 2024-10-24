@@ -1,0 +1,27 @@
+# JAVA 다운받기
+
+# 설정 - 시스템 - 정보 - 고급 시스템 설정 - 환경 변수 - 시스템 변수 - 이름: JAVA_HOME & 경로: c드라이브 안에 file - java에서 java의 경로(이때 " "없애기)
+
+# 아나콘다 프롬포트에서 pip install JPype1 konlpy 다운받고 주피터 노트북 열기
+
+from konlpy.tag import Kkma, Okt
+
+## okt : 트위터에서 만든 형태소 분석기
+okt = Okt()
+okt.nouns("아버지가방에들어가신다.") #명사 단위로 자르기
+-> ['아버지', '가방']
+
+## kkma : 서울대에서 만든 형태소 분석기
+kkma = Kkma()
+kkma.nouns("아버지가방에들어가신다.")
+-> ['아버지', '아버지가방', '가방']
+
+
+# 기본 빈도분석 코드
+okt = Okt()
+
+nouns = []
+for i in okt.nouns(데이터셋):
+    if len(i) >= 2:
+        nouns.append(i)
+print(nouns)

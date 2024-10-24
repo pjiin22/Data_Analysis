@@ -1,0 +1,12 @@
+#!pip install wordcloud
+
+from wordcloud import WordCloud
+
+wc = WordCloud(background_color="색",
+               font_path = "폰트 경로").generate_from_frequencies(데이터셋명)
+
+wc.recolor(color_func=custom_color_func) #색 지정
+
+plt.imshow(wc)
+plt.axis("off")
+plt.show()
