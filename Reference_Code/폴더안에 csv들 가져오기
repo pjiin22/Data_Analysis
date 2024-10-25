@@ -15,6 +15,7 @@ for i in os.listdir("폴더명"):
     df['Date'] = pd.to_datetime(df['Date'])
     
     # 읽어온 데이터를 빈 데이터프레임에 추가
+    # 여기까지하면 데이터셋 생성 완료
     data = pd.concat([data, df], ignore_index=True)
 
 # 전체 데이터프레임 확인
