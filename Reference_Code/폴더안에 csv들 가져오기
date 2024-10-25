@@ -5,7 +5,8 @@ import os
 data = pd.DataFrame()# 빈 데이터프레임을 생성하여 이후에 데이터를 추가
 
 for i in os.listdir("폴더명"):
-    df = pd.read_csv(os.path.join("폴더명", i)) #파일 경로
+    df = pd.read_csv("폴더명/" + i) #파일경로.ver1
+    df = pd.read_csv(os.path.join("폴더명", i)) #파일 경로.ver2
     
     ## 파일명 추출하여 데이터프레임에 추가 
     name = i.split('.')[0]
@@ -22,11 +23,11 @@ for i in os.listdir("폴더명"):
 print(data)
 
 
-(2) 각 파일 마다 데이터프레임 만들기
+(2) 각 파일 마다 데이터프레임 만들기.ver1
 dataframes = []
 
-for i in os.listdir(폴더명):
-    df = pd.read_csv(os.path.join(폴더명, i)) 
+for i in os.listdir("폴더명"):
+    df = pd.read_csv("폴더명/" + i)
 
     name = i.split('.')[0]
     df['name'] = name
@@ -41,6 +42,26 @@ for i in os.listdir(폴더명):
 for name, df in dataframes:
     print(f"파일명: {name}")
     print(df)
+
+
+(3) 각 파일 마다 데이터프레임 만들기.ver2
+dataframes = {}
+
+#  enumerate : i에 파일 순서 번호(인덱스), filename에 파일명을 각각 할당
+for i, filename in enumerate(os.listdir(폴더명)):
+    if i >= (파일개수+1):  
+        break
+
+    df = pd.read_csv(directory + "/" + filename) #ver1
+    df = pd.read_csv(file_path = os.path.join(directory, filename)) #ver2
+    
+    # 파일명을 딕셔너리의 키로 사용하여 데이터프레임 저장
+    dataframes[f"df_{i}"] = df
+
+    # 각 데이터프레임 출력
+    print(f"DataFrame for File {filename} (df_{i}):")
+    print(df)
+
 
 
 **파일명**
