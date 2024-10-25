@@ -1,2 +1,23 @@
+import os
+
+data = pd.DataFrame()# 빈 데이터프레임을 생성하여 이후에 데이터를 추가
+
 for i in os.listdir("폴더명"):
-  
+    file_path = os.path.join("폴더명", i)  # 파일 경로 생성
+    df = pd.read_csv(file_path)
+    
+    ## 파일명 추출하여 데이터프레임에 추가 
+    name = i.split('.')[0]
+    df['name'] = name
+    
+    # 읽어온 데이터를 빈 데이터프레임에 추가
+    data = pd.concat([data, df], ignore_index=True)
+
+# 전체 데이터프레임 확인
+print(data)
+
+
+**파일명**
+현재 폴더에 있는 경우: "폴더명" -> 주피터에 옮겨놓으면 이거 쓰면 됨
+상위 폴더에 있는 경우: "../폴더명" -  "../파일명.csv"
+루트 경로에 있는 경우: "/폴더명" - "C:/폴더명/파일명.csv"
