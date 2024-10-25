@@ -1,10 +1,11 @@
 import os
 
+(1) 모든 데이터 합치기
+
 data = pd.DataFrame()# 빈 데이터프레임을 생성하여 이후에 데이터를 추가
 
 for i in os.listdir("폴더명"):
-    file_path = os.path.join("폴더명", i)  # 파일 경로 생성
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(os.path.join("폴더명", i)) #파일 경로
     
     ## 파일명 추출하여 데이터프레임에 추가 
     name = i.split('.')[0]
@@ -13,13 +14,33 @@ for i in os.listdir("폴더명"):
     ## 날짜 열 생성
     df = df.rename(columns={'날짜 컬럼명': 'Date'})
     df['Date'] = pd.to_datetime(df['Date'])
-    
-    # 읽어온 데이터를 빈 데이터프레임에 추가
-    # 여기까지하면 데이터셋 생성 완료
+
+    # 읽어온 데이터를 빈 데이터프레임에 다 합치기
     data = pd.concat([data, df], ignore_index=True)
 
 # 전체 데이터프레임 확인
 print(data)
+
+
+(2) 각 파일 마다 데이터프레임 만들기
+dataframes = []
+
+for i in os.listdir(폴더명):
+    df = pd.read_csv(os.path.join(폴더명, i)) 
+
+    name = i.split('.')[0]
+    df['name'] = name
+
+    df = df.rename(columns={'날짜 컬럼명': 'Date'})
+    df['Date'] = pd.to_datetime(df['Date'])
+
+    # 각 파일의 데이터프레임을 리스트에 저장
+    dataframes.append((name, df))
+
+# 개별 데이터프레임 출력
+for name, df in dataframes:
+    print(f"파일명: {name}")
+    print(df)
 
 
 **파일명**
