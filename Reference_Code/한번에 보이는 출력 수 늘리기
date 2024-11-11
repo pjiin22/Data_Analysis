@@ -1,0 +1,10 @@
+import sys
+import pandas as pd
+
+#출력 수 제한 늘리기 (예시2900)
+pd.options.display.max_rows = 2900  
+
+# 출력 무제한으로 설정하기
+pd.options.display.max_rows = None
+
+print(a)
