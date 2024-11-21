@@ -1,3 +1,9 @@
+# 사전 빈도수 참고
+# 이 외에도 방법 많음
+count변수 = Counter(명사묶음변수)
+
+
+
 #!pip install wordcloud
 
 from wordcloud import WordCloud
@@ -11,9 +17,17 @@ plt.imshow(wc)
 plt.axis("off")
 plt.show()
 
-# 빈도수에 따라 색을 설정하는 함수 정의
+
+
+# 빈도수(상위1%)에 따라 색을 설정하는 함수 정의
+기준 = pd.Series(count변수.values()).quantile(0.99)
+
 def custom_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
-    if moon_dic[word] >= value:
+    if count변수[word] >= 기준: ##횟수의미
         return "black"  # 검은색
     else:
         return "gray"  # 회색
+
+
+
+
