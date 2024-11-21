@@ -10,3 +10,10 @@ wc.recolor(color_func=custom_color_func) #색 지정
 plt.imshow(wc)
 plt.axis("off")
 plt.show()
+
+# 빈도수에 따라 색을 설정하는 함수 정의
+def custom_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+    if moon_dic[word] >= value:
+        return "black"  # 검은색
+    else:
+        return "gray"  # 회색
