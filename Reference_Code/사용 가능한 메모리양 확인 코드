@@ -1,0 +1,2 @@
+import psutil
+print(f"가용 메모리: {psutil.virtual_memory().available / (1024**2):.2f} MB")
