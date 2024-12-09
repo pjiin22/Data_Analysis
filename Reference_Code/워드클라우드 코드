@@ -31,3 +31,14 @@ def custom_color_func(word, font_size, position, orientation, random_state=None,
 
 
 
+
+*색깔바꾸기*
+def mint_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+    return "rgb(62, 180, 137)"  # 민트색 RGB 값
+
+wordcloud = WordCloud(width=800, height=400, background_color="white", 
+                       color_func=mint_color_func).generate("Your text here")
+wordcloud.to_image().show()
+
+
+
